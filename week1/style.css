@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 .total-page {
   display: flex;
   position: relative;
@@ -42,6 +45,9 @@
 .navbar {
   display: flex;
   align-items: center;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .title {
   flex: none;
