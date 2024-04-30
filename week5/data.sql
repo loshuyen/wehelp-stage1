@@ -39,7 +39,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (1,'test2','test','test',0,'2024-04-29 14:44:48'),(2,'user1','username1','password1',0,'2024-04-29 14:46:02'),(3,'user2','username2','password2',0,'2024-04-29 14:46:33'),(4,'user3','username3','password3',0,'2024-04-29 14:46:56'),(5,'user4','username4','password4',0,'2024-04-29 14:47:14');
+INSERT INTO `member` VALUES (1,'test2','test','test',0,'2024-04-30 10:13:10'),(2,'user1','username1','password1',115,'2024-04-30 10:14:26'),(3,'user2','username2','password2',35,'2024-04-30 10:14:58'),(4,'user3','username3','password3',0,'2024-04-30 10:16:12'),(5,'user4','username4','password4',0,'2024-04-30 10:16:20');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `message` (
   PRIMARY KEY (`id`),
   KEY `member_id` (`member_id`),
   CONSTRAINT `message_ibfk_1` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `message` (
 
 LOCK TABLES `message` WRITE;
 /*!40000 ALTER TABLE `message` DISABLE KEYS */;
-INSERT INTO `message` VALUES (1,1,'Good Daaaaay!!!!',3,'2024-04-29 16:06:20'),(2,2,'EARTHQUAKEEEEE~~~',10,'2024-04-29 16:08:01'),(3,2,'Earthquake again!!!!!',13,'2024-04-29 16:08:52'),(4,3,'Hit LIKE, SUBSCRIBE, and SHARE!',2,'2024-04-29 16:09:53');
+INSERT INTO `message` VALUES (1,2,'EARTHQUAKKKKK!!!!!!',248,'2024-04-30 10:59:50'),(2,2,'Earthquake AGAIN!!!!!',152,'2024-04-30 11:00:53'),(3,3,'Good Day~ my DEAR FANS',1193,'2024-04-30 11:03:10'),(4,4,'Pls HIT LIKE, SUBSCRIBE, and SHARE!',3,'2024-04-30 11:04:18'),(5,5,'why so seriousssss~',0,'2024-04-30 11:07:26'),(6,1,'It\'s a text msg.',50,'2024-04-30 11:16:39');
 /*!40000 ALTER TABLE `message` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -81,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-29 17:06:39
+-- Dump completed on 2024-04-30 11:26:02
