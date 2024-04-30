@@ -32,7 +32,7 @@
 - SELECT * FROM member ORDER BY time DESC  
   LIMIT 3 OFFSET 1;  
 <img width="710" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/8b4726e0-f275-4ed9-938b-5b451d383d42"><br>
-- SELECT * FROM member WHERE name="test";
+- SELECT * FROM member WHERE username="test";
 <img width="679" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/b48001a6-da50-4b24-ab25-a6553bbcbbee"><br>
 - SELECT * FROM member WHERE name LIKE "%es%";
 <img width="675" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/cc1153ff-b728-4d6c-b1d9-e74279f0ed69"><br>
@@ -47,10 +47,11 @@
 <img width="424" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/b2537066-f005-4272-9c28-051959160331"><br>
 - SELECT AVG(follower_count) FROM member;  
 <img width="432" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/4b4a97db-7762-48a8-8834-97f306ec4d7d"><br>
-- SELECT AVG(follower_count) FROM member  
+- SELECT AVG(follower_count) FROM (  
+  SELECT * FROM member  
   ORDER BY follower_count DESC  
-  LIMIT 2;  
-  <img width="416" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/dd95173b-f451-4b82-9994-0fd8712ac052"><br>
+  LIMIT 2) AS top_2_follower;  
+  <img width="380" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/31e402dd-ba38-4dd9-aa46-e65bf88aeaf2"><br>
 ### Task 5
 - CREATE TABLE message (  
   id BIGINT PRIMARY KEY AUTO_INCREMENT,  
