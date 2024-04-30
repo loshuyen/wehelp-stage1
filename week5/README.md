@@ -58,7 +58,7 @@
   content VARCHAR(255) NOT NULL,  
   like_count INT UNSIGNED NOT NULL DEFAULT 0,  
   time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,  
-  FOREIGN KEY (member_id) REFERENCES member(id));
+  FOREIGN KEY (member_id) REFERENCES member(id));  
 <img width="516" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/56948476-28c3-44d2-9a02-4c89cc481329"><br>
 - SELECT * FROM message  
   JOIN member ON message.member_id=member.id;
