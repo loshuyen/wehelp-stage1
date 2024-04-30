@@ -1,3 +1,4 @@
+### Task 2
 - CREATE DATABASE website;  
 <img width="332" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/b2e3961c-66b8-40ba-887f-0ec31850b641"><br>
 - CREATE TABLE member (  
@@ -8,6 +9,7 @@
   follower_count INT UNSIGNED NOT NULL DEFAULT 0,  
   time DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP);  
 <img width="524" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/e530f92b-f44b-44ea-9d1d-c3eb3d1eed96"><br>
+### Task 3
 - INSERT INTO member (name, username, password)  
   VALUES ("test", "test", "test");
   
@@ -27,7 +29,8 @@
 <img width="711" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/239e63bd-7cc1-4e5f-8e0a-87f1a599fc27"><br>
 - SELECT * FROM member ORDER BY time DESC;  
 <img width="714" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/5e609ad7-b12a-495e-b18d-dc739812b17c"><br>
-- SELECT * FROM member ORDER BY time DESC LIMIT 3 OFFSET 1;  
+- SELECT * FROM member ORDER BY time DESC  
+  LIMIT 3 OFFSET 1;  
 <img width="710" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/8b4726e0-f275-4ed9-938b-5b451d383d42"><br>
 - SELECT * FROM member WHERE name="test";
 <img width="679" alt="image" src="https://github.com/loshuyen/wehelp-stage1/assets/138111003/b48001a6-da50-4b24-ab25-a6553bbcbbee"><br>
