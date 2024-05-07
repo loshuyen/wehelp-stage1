@@ -42,12 +42,20 @@
             const formData = new FormData();
             formData.append("username", username);
             formData.append("password", password);
+<<<<<<< HEAD
           
             fetch("http://127.0.0.1:8000/signin", {method:"POST", body:formData})
             .then(
                 response => {
                 if (response.redirected) {
                        window.location.href = response.url;  
+=======
+            fetch("http://127.0.0.1:8000/signin", {method:"POST", body:formData, redirect:"follow"})
+            .then(
+                res => {
+                if (res.redirected) {
+                       window.location.href = res.url;  
+>>>>>>> origin/main
                        return;
                     } 
                     else
@@ -55,6 +63,10 @@
                     }  
                 )
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
         function calc_square () {
                 const number = document.querySelector("#number").value;
                 if (Math.floor(number) == number && number > 0){
