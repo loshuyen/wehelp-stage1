@@ -28,7 +28,7 @@ def get_home(request:Request):
 
 @app.post("/signin")
 def verify_user(request:Request, username: Annotated[str, Form()]=None, password: Annotated[str, Form()]=None):
-    cursor.execute(f"SELECT id, name, username, password FROM member WHERE username='{username}' and password='{password}'")
+    cursor.execute("SELECT id, name, username, password FROM member WHERE username=%s AND password=%s", (username, password))
     result = cursor.fetchall()
     if (not result):
         return RedirectResponse("/error?message=帳號或密碼輸入錯誤", status_code=303)
@@ -47,7 +47,7 @@ def error_msg(request:Request, message):
 def loggedIn(request:Request):
     if "SIGNED-IN" in request.session and request.session["SIGNED-IN"]:
         name = request.session["NAME"]
-        cursor.execute(f"SELECT member.name, message.content, message.id FROM message JOIN member ON message.member_id=member.id ORDER BY message.time DESC")
+        cursor.execute("SELECT member.name, message.content, message.id FROM message JOIN member ON message.member_id=member.id ORDER BY message.time DESC")
         messages = cursor.fetchall()
         return templates.TemplateResponse(request=request, name="member.html", context={"name": name, "messages": messages})
     return RedirectResponse("/")
@@ -62,10 +62,10 @@ def sign_out(request:Request):
 
 @app.post("/signup")
 def sign_up(request:Request, name:Annotated[str, Form()], username:Annotated[str, Form()], password: Annotated[str, Form()]):
-    cursor.execute(f"SELECT * FROM member WHERE username='{username}'")
+    cursor.execute("SELECT * FROM member WHERE username=%s", (username, ))
     result = cursor.fetchone()
     if result == None:
-        cursor.execute(f"INSERT INTO member (name, username, password) VALUES ('{name}', '{username}', '{password}')")
+        cursor.execute("INSERT INTO member (name, username, password) VALUES (%s, %s, %s)", (name, username, password))
         db.commit()
         return RedirectResponse("/", status_code=303)
     return RedirectResponse("/error?message=帳號重複", status_code=303)
@@ -73,7 +73,7 @@ def sign_up(request:Request, name:Annotated[str, Form()], username:Annotated[str
 @app.post("/createMessage")
 def create_message(request:Request, content:Annotated[str, Form()]):
     member_id = request.session['ID']
-    cursor.execute(f"INSERT INTO message (member_id, content) VALUES ('{member_id}', '{content}')")
+    cursor.execute("INSERT INTO message (member_id, content) VALUES (%s, %s)", (member_id, content))
     db.commit()
     return RedirectResponse("/member", status_code=303)
 
@@ -82,9 +82,10 @@ class Message(BaseModel):
 
 @app.post("/deleteMessage")
 def delete_message(request:Request, message:Message):
-    cursor.execute(f"SELECT member_id FROM message WHERE id={message.id}")
+    cursor.execute("SELECT member_id FROM message WHERE id=%s", (message.id, ))
     member_id = cursor.fetchone()[0]
     if member_id == request.session["ID"]:
-        cursor.execute(f"DELETE FROM message WHERE id={message.id}")
+        cursor.execute("DELETE FROM message WHERE id=%s", (message.id, ))
         db.commit()
         return RedirectResponse("/member", status_code=303)
+    return
