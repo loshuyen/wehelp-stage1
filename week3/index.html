@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>RWD Website</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="left">
+      <div class="navbar">
+        <div class="title"><p>My Website</p></div>
+        <div class="items-container">
+          <div class="item">Item 1</div>
+          <div class="item">Item 2</div>
+          <div class="item">Item 3</div>
+          <div class="item">Item 4</div>
+          <img src="./images/burger.png" id="burger" onclick="openMenu()" />
+        </div>
+      </div>
+      <div class="welcome">
+        <p>Welcome to MyHome</p>
+      </div>
+      <div class="content">
+        <div class="smallbox-container"></div>
+      </div>
+      <div class="content" id="bigbox-content">
+        <div class="bigbox-container"></div>
+      </div>
+      <div id="load-content">
+        <div class="load" id="load-more" onclick="loadMore()">
+          <p>Load More</p>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="burger-item">Item 1</div>
+      <div class="burger-item">Item 2</div>
+      <div class="burger-item">Item 3</div>
+      <div class="burger-item">Item 4</div>
+      <img src="./images/cross.png" onclick="closeMenu()" />
+    </div>
+    <script>
+      function closeMenu() {
+        const e = document.querySelector(".right");
+        e.style.display = "none";
+      }
+      function openMenu() {
+        const e = document.querySelector(".right");
+        e.style.display = "block";
+      }
+      function loadMore() {
+        if (!spots[n]) {
+          return;
+        }
+        let m = Math.min(n + 10, spots.length);
+        let bigboxContainerDiv = document.createElement("div");
+        bigboxContainerDiv.className = "bigbox-container";
+        bigboxContainerDiv.id = `container${n}`;
+        document
+          .querySelector("#bigbox-content")
+          .appendChild(bigboxContainerDiv);
+        for (let i = n; i < m; i++) {
+          let bigboxDiv = document.createElement("div");
+          let img = document.createElement("img");
+          let imgStar = document.createElement("img");
+          let p = document.createElement("p");
+          bigboxDiv.className = "bigbox";
+          imgStar.src = "./images/star.svg";
+          imgStar.id = "star";
+          img.src = spots[i].imgUrl;
+          p.textContent = spots[i].title;
+          bigboxContainerDiv.appendChild(bigboxDiv);
+          bigboxDiv.appendChild(img);
+          bigboxDiv.appendChild(imgStar);
+          bigboxDiv.appendChild(p);
+          n++;
+        }
+      }
+      const spots = [];
+      // current index of spot data
+      let n = 0;
+      fetch(
+        "https://padax.github.io/taipei-day-trip-resources/taipei-attractions-assignment-1"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          for (let spot of data["data"]["results"]) {
+            let imgUrl = "https" + spot["filelist"].split("https")[1];
+            spots.push({ title: spot["stitle"], imgUrl: imgUrl });
+          }
+          for (let i = n; i < 3; i++) {
+            let div = document.createElement("div");
+            let img = document.createElement("img");
+            let p = document.createElement("p");
+            div.className = "smallbox";
+            img.src = spots[i]["imgUrl"];
+            p.textContent = spots[i]["title"];
+            // div.textContent = `<img src=${spots[i]['imgUrl']} /><p>${spots[i]['title']}</p>`;
+            document.querySelector(".smallbox-container").appendChild(div);
+            div.appendChild(img);
+            div.appendChild(p);
+            n++;
+          }
+          for (let i = n; i < 13; i++) {
+            let div = document.createElement("div");
+            let img = document.createElement("img");
+            let img2 = document.createElement("img");
+            let p = document.createElement("p");
+            div.className = "bigbox";
+            img.src = spots[i]["imgUrl"];
+            img2.src = "./images/star.svg";
+            img2.id = "star";
+            p.textContent = spots[i]["title"];
+            document.querySelector(".bigbox-container").appendChild(div);
+            div.appendChild(img);
+            div.appendChild(img2);
+            div.appendChild(p);
+            n++;
+          }
+        });
+    </script>
+  </body>
+</html>

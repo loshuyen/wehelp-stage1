@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>RWD Website</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="left">
+      <div class="navbar">
+        <div class="title"><p>My Website</p></div>
+        <div class="items-container">
+          <div class="item">Item 1</div>
+          <div class="item">Item 2</div>
+          <div class="item">Item 3</div>
+          <div class="item">Item 4</div>
+          <img src="burger.png" id="burger" onclick="openMenu()" />
+        </div>
+      </div>
+      <div class="welcome">
+        <p>Welcome to MyHome</p>
+      </div>
+      <div class="content">
+        <div class="smallbox-container">
+          <div class="smallbox">
+            <img src="image.jpeg" />
+            <p>Promotion 1</p>
+          </div>
+          <div class="smallbox">
+            <img src="image.jpeg" />
+            <p>Promotion 2</p>
+          </div>
+          <div class="smallbox">
+            <img src="image.jpeg" />
+            <p>Promotion 3</p>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="bigbox-container">
+          <div class="bigbox">
+            <img src="image.jpeg" />
+            <img src="star.svg" id="star" />
+            <p>Title 1</p>
+          </div>
+          <div class="bigbox">
+            <img src="image.jpeg" />
+            <img src="star.svg" id="star" />
+            <p>Title 2</p>
+          </div>
+          <div class="bigbox">
+            <img src="image.jpeg" />
+            <img src="star.svg" id="star" />
+            <p>Title 3</p>
+          </div>
+          <div class="bigbox">
+            <img src="image.jpeg" />
+            <img src="star.svg" id="star" />
+            <p>Title 4</p>
+          </div>
+          <div class="bigbox">
+            <img src="image.jpeg" />
+            <img src="star.svg" id="star" />
+            <p>Title 5</p>
+          </div>
+          <div class="bigbox">
+            <img src="image.jpeg" />
+            <img src="star.svg" id="star" />
+            <p>Title 6</p>
+          </div>
+          <div class="bigbox">
+            <img src="image.jpeg" />
+            <img src="star.svg" id="star" />
+            <p>Title 7</p>
+          </div>
+          <div class="bigbox">
+            <img src="image.jpeg" />
+            <img src="star.svg" id="star" />
+            <p>Title 8</p>
+          </div>
+
+          <div class="bigbox">
+            <img src="image.jpeg" />
+            <img src="star.svg" id="star" />
+            <p>Title 9</p>
+          </div>
+          <div class="bigbox">
+            <img src="image.jpeg" />
+            <img src="star.svg" id="star" />
+            <p>Title 10</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right">
+      <div class="burger-item">Item 1</div>
+      <div class="burger-item">Item 2</div>
+      <div class="burger-item">Item 3</div>
+      <div class="burger-item">Item 4</div>
+      <img src="cross.png" onclick="closeMenu()" />
+    </div>
+    <script>
+      function closeMenu() {
+        const e = document.querySelector('.right');
+        e.style.display = 'none';
+      }
+      function openMenu() {
+        const e = document.querySelector('.right');
+        e.style.display = 'block';
+      }
+    </script>
+  </body>
+</html>

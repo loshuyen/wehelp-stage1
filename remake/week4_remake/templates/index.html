@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Verification System</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="content">
+      <div class="container">
+        <div class="title"><p>歡迎光臨，請輸入帳號密碼</p></div>
+        <div>登入系統</div>
+        <form action="/signin" method="post" onsubmit="return checkAgreement()">
+          <div>
+              <label for="username">帳號 </label>
+              <input type="text" id="username" name="username">
+          </div>
+          <div>
+              <label for="password">密碼 </label>
+              <input type="password" id="password" name="password">
+          </div>
+          <div>
+            <label>同意條款</label>
+            <input type="checkbox" id="agreement"/>
+          </div>
+          <div>
+              <button type="submit">登入</button>
+          </div>
+      </form>
+      </div>
+      <div class="container calculator">
+        <div>計算正整數的平方</div>
+          <div>
+            <label>正整數 </label><input type="text" id="number"/>
+          </div>
+          <div>
+            <button onclick="submitSquare()">計算</button>
+          </div>
+      </div>
+    </div>
+    <script>
+        function checkAgreement() {
+            const agreement = document.querySelector("#agreement");
+            if (!agreement.checked) {
+                alert("請先勾選同意條款");
+                return false;
+            }
+            return true;
+        }
+        function submitSquare() {
+          const number = document.querySelector("#number").value;
+          if (Math.floor(number) == number && number > 0){
+              return window.location.href = `/square/${number}`;
+            } else {
+                return alert("請輸入一個正整數");
+            }
+        }
+    </script>
+  </body>
+</html>
